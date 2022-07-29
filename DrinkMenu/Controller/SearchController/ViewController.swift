@@ -179,7 +179,7 @@ extension ViewController: UIGestureRecognizerDelegate {
       let location = touch.location(in: nil)
 
   // Check if location is inside the showButton
-      if showButton.frame.contains(location) {
+        if showButton.frame.contains(location) || tableView.frame.contains(location) {
           return false
       }
 
