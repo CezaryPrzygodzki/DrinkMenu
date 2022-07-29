@@ -23,10 +23,7 @@ class DrinkTableViewCell: UITableViewCell {
         drinkImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
         drinkImageView.widthAnchor.constraint(equalToConstant: 130).isActive = true
         drinkImageView.heightAnchor.constraint(equalToConstant: 130).isActive = true
-        
-        
-        
-        
+                
         contentView.addSubview(nameLabel)
         nameLabel.font = UIFont(name: "Times New Roman", size: 20)
         nameLabel.textColor = .white

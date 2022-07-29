@@ -14,10 +14,9 @@ class IngredientsCollectionViewCell: UICollectionViewCell {
             super.init(frame: frame)
         addSubview(label)
         
-        backgroundColor = .orange.withAlphaComponent(0.3)
-        layer.cornerRadius = 6
-        label.textColor = .orange
-        label.font = UIFont.systemFont(ofSize: 14)
+        backgroundColor = UIColor(red: 115/255, green: 130/255, blue: 140/255, alpha: 1)
+        label.textColor = UIColor(red: 36/255, green: 52/255, blue: 63/255, alpha: 1)
+        label.font = UIFont(name: "Times New Roman", size: 14)
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
