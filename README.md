@@ -1,5 +1,5 @@
 # DrinkMenu
-Prosta aplikacja służąca do wyświetlania bazy drinków, w której możemy sortować wyniki po składnikach potrzebnych do ich zrobienia.
+Prosta aplikacja służąca do wyświetlania bazy drinków, w której możemy wyszukać napoje po składnikach potrzebnych do ich zrobienia.
 
 # Uruchamianie
 Do uruchomienia aplikacji potrzebny będzie xCode. Projekt nie wymaga żadnych dodatkowych bibliotek niż natywne, więc po pobraniu można od razu uruchomić.
@@ -16,7 +16,7 @@ Aplikacja:
 - Ukazanie szczegółów danego drinka
 
 # Możliwości rozwoju
-- Implementacja trybu ciemnego / nocnego
 - Dodanie dokładnej ilości potrzebnej do danego drinka
+- Dodanie filtrowania drinków np alkoholowe / bezalkoholowe
 - Możliwość wyszukiwania drinków po składniku, który wybierzemy z ekranu szczegółów innego drinka (poprzez kliknięcie w dany kafelek z nazwą składnika)
 
