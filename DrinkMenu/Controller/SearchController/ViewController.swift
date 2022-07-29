@@ -13,12 +13,11 @@ class ViewController: UIViewController {
     private let ingredientTextField = UITextField()
     private let showButton = UIButton()
     
-    var ingredient: String!
+    private var ingredient: String!
     private let tableView = UITableView()
     private let tableViewCellIdentifier = "tableViewCellIdentifier"
 
-
-    var drinks: Drinks?
+    private var drinks: Drinks?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,15 +35,21 @@ class ViewController: UIViewController {
         view.addSubview(tableView)
         configureTableView()
         
-        
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.delegate = self
+        view.addGestureRecognizer(tap)
     }
+    
+    @objc private func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
 
     private func configureIngredientLabel(){
         ingredientLabel.text = "Ingredient of drinks you'd like to get:"
         ingredientLabel.numberOfLines = 0
         ingredientLabel.textColor = .white
-        //ingredientLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         ingredientLabel.font = UIFont(name: "Times New Roman", size: 20)
         
         ingredientLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -132,7 +137,6 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //RepositoriesHelper.shared.repositories.count
         return drinks?.drinks.count ?? 0
     }
     
@@ -158,13 +162,27 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print ("Przenosi do drinka")
         let moreInfoVC = MoreInfoViewController()
         let drink = drinks?.drinks[indexPath.row]
-        moreInfoVC.idDrink = drink?.idDrink
+        moreInfoVC.setId(id: drink!.idDrink)
         moreInfoVC.title = drink?.strDrink
         self.navigationController?.pushViewController(moreInfoVC, animated: true)
-
-
     }
 }
+
+
+extension ViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+
+  // Get the location in CGPoint
+      let location = touch.location(in: nil)
+
+  // Check if location is inside the showButton
+      if showButton.frame.contains(location) {
+          return false
+      }
+
+      return true
+    }
+  }
